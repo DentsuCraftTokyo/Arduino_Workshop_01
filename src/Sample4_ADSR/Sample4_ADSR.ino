@@ -1,5 +1,5 @@
 
-#include <MozziGuts.h>
+#include <Mozzi.h>
 #include <Oscil.h> // oscillator
 #include <tables/sin2048_int8.h> // table for Oscils to play
 #include <ADSR.h>
@@ -11,7 +11,7 @@ ADSR <AUDIO_RATE, AUDIO_RATE> envelope;//エンベロープをかけるための
 unsigned int Dur, Atk, Dec, Sus, Rel;//
 EventDelay noteDelay;
 
-#define CONTROL_RATE 64 // Hz, powers of 2 are most reliable
+#define CONTROL_RATE 256 // Hz, powers of 2 are most reliable
 const int button01Pin = 1;
 const int button02Pin = 2;
 const int button03Pin = 3;
@@ -198,7 +198,7 @@ void updateControl(){
 
 }
 
-AudioOutput_t updateAudio() {
+AudioOutput updateAudio() {
   envelope.update();
   gain =  (int)(envelope.next() * volume)>>8;
   return MonoOutput::from16Bit((int) (gain * aSin.next()));

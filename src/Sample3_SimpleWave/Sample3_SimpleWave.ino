@@ -1,5 +1,5 @@
 
-#include <MozziGuts.h>
+#include <Mozzi.h>
 #include <Oscil.h> // oscillator
 #include <tables/sin2048_int8.h> // table for Oscils to play
 #include <tables/triangle2048_int8.h>
@@ -86,7 +86,7 @@ void updateControl(){
   Serial.println();
 }
 
-AudioOutput_t updateAudio() {
+AudioOutput updateAudio() {
   switch(waveform){
     case 0: //sin wave
       return MonoOutput::from16Bit((int) (volume * aSin.next()));

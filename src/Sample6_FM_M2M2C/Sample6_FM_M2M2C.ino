@@ -1,5 +1,5 @@
 
-#include <MozziGuts.h>
+#include <Mozzi.h>
 #include <Oscil.h>                // oscillator
 #include <tables/sin2048_int8.h>  // table for Oscils to play
 
@@ -13,7 +13,7 @@ Oscil<SIN2048_NUM_CELLS, AUDIO_RATE> aModulator2(SIN2048_DATA);
 ADSR<AUDIO_RATE, AUDIO_RATE> envelope;  //エンベロープをかけるためのクラス
 unsigned int Dur, Atk, Dec, Sus, Rel;   //ADSRの長さを入れておく変数
 
-#define CONTROL_RATE 128  // Hz, powers of 2 are most reliable
+#define CONTROL_RATE 256  // Hz, powers of 2 are most reliable
 
 const int button01Pin = 8;
 const int button02Pin = 7;
@@ -210,7 +210,7 @@ void updateControl() {
   printInfo(oct, mod_freq_1, mod_index_1, mod_freq_2, mod_index_2);
 }
 
-AudioOutput_t updateAudio() {
+AudioOutput updateAudio() {
   envelope.update();
   // long modulation_1 = mod_amp_1 * aModulator1.next(); //Modulatorの振幅をfm_intensityで制御している？
   // long modulation_2 = mod_amp_2 * aModulator2.next();
