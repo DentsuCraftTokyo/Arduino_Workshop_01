@@ -1,3 +1,6 @@
+//　モジュレータ-1>モジュレータ-2>キャリアのFM合成
+// analog04Pinのボリュームでオクターブの変更が可能
+// button09Pinのボタンを押しながら、analog01Pin~analog03Pinのボリュームでモジュレータ1のパラメータを制御
 
 #include <Mozzi.h>
 #include <Oscil.h>                // oscillator

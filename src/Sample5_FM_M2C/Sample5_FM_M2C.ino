@@ -1,3 +1,4 @@
+// モジュレータ->キャリアのシンプルなFM合成
 
 #include <Mozzi.h>
 #include <Oscil.h>                // oscillator

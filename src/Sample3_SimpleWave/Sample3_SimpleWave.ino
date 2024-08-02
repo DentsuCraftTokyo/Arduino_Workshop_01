@@ -1,3 +1,5 @@
+// 振幅、周波数、波形を変更して音がどのように変化するかを確認してみる。
+
 
 #include <Mozzi.h>
 #include <Oscil.h> // oscillator
