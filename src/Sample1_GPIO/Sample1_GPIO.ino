@@ -1,4 +1,4 @@
-
+// GPIO確認用のサンプルプログラム
 
 const int button01Pin = 1;
 const int button02Pin = 2;

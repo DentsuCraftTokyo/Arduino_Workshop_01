@@ -1,5 +1,5 @@
 
-#include <MozziGuts.h>
+#include <Mozzi.h>
 #include <Oscil.h> // oscillator
 #include <tables/sin2048_int8.h> // table for Oscils to play
 #include <ADSR.h>
@@ -11,7 +11,7 @@ ADSR <AUDIO_RATE, AUDIO_RATE> envelope;//エンベロープをかけるための
 unsigned int Dur, Atk, Dec, Sus, Rel;//
 EventDelay noteDelay;
 
-#define CONTROL_RATE 64 // Hz, powers of 2 are most reliable
+#define CONTROL_RATE 256 // Hz, powers of 2 are most reliable
 const int button01Pin = 1;
 const int button02Pin = 2;
 const int button03Pin = 3;
@@ -30,7 +30,6 @@ int button05State = 1;
 int button06State = 1;
 int button07State = 1;
 int button08State = 1;
-int button09State = 1;
 int tempButton01State = 1;
 int tempButton02State = 1;
 int tempButton03State = 1;
@@ -39,7 +38,6 @@ int tempButton05State = 1;
 int tempButton06State = 1;
 int tempButton07State = 1;
 int tempButton08State = 1;
-int tempButton09State = 1;
 
 const int analog01Pin = 29;
 const int analog02Pin = 28;
@@ -58,7 +56,7 @@ unsigned long currentTime;
 unsigned long timeStamp;
 unsigned int down_time = 0;
 
-const byte volume = 255;
+const byte volume = 10;
 
 void setFreqonDown(int notenumber){
   freq = mtof(notenumber);
@@ -110,7 +108,6 @@ void updateControl(){
   button06State = (digitalRead(button06Pin));
   button07State = (digitalRead(button07Pin));
   button08State = (digitalRead(button08Pin));
-  button09State = (digitalRead(button09Pin));
 
   analog01Val = analogRead(analog01Pin); // value is 0-1023
   analog02Val = analogRead(analog02Pin); // value is 0-1023
@@ -201,7 +198,7 @@ void updateControl(){
 
 }
 
-AudioOutput_t updateAudio() {
+AudioOutput updateAudio() {
   envelope.update();
   gain =  (int)(envelope.next() * volume)>>8;
   return MonoOutput::from16Bit((int) (gain * aSin.next()));
