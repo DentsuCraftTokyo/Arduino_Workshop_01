@@ -31,8 +31,7 @@ int tempButton01State, tempButton02State, tempButton03State, tempButton04State, 
 const int analog01Pin = 29;
 const int analog02Pin = 28;
 const int analog03Pin = 27;
-const int analog04Pin = 26;
-int analog01Val, analog02Val, analog03Val, analog04Val = 0;  // variable to store the value coming from the sensor
+int analog01Val, analog02Val, analog03Val= 0;  // variable to store the value coming from the sensor
 
 // float harm_ratio;
 int harm_ratio;
@@ -70,7 +69,6 @@ void readInterface() {
   analog01Val = analogRead(analog01Pin);  // value is 0-1023
   analog02Val = analogRead(analog02Pin);  // value is 0-1023
   analog03Val = analogRead(analog03Pin);  // value is 0-1023
-  analog04Val = analogRead(analog04Pin);  // value is 0-1023
 }
 
 void setup() {
